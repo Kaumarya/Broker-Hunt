@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broker Hunt - Luxury Real Estate Brokerage</title>
+    <meta name="description" content="Broker Hunt - Premium real estate brokerage with AI-powered agents for luxury property marketing, sales, and rental management.">
+    <meta property="og:title" content="Broker Hunt - Luxury Real Estate Brokerage">
+    <meta property="og:description" content="Unlock the door to your next legacy property with our premium real estate services.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,500;1,500&family=Raleway:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Luxury Color Palette */
+            --champagne-gold: #D4AF37;
+            --deep-navy: #0A1628;
+            --midnight-black: #1A1A1A;
+            --charcoal: #2C2C2C;
+            --pearl-white: #F8F8F8;
+            --silver-mist: #E5E5E5;
+            --rose-gold: #E8B4B8;
+            --emerald: #2E8B57;
+            --platinum: #E5E4E2;
+            --bronze: #CD7F32;
+            
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-subheading: 'Lora', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Raleway', sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+            
+            /* Effects */
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --gradient-gold: linear-gradient(135deg, #D4AF37, #F7E98E);
+            --gradient-dark: linear-gradient(135deg, #0A1628, #2C2C2C);
+            --gradient-overlay: linear-gradient(45deg, rgba(212, 175, 55, 0.9), rgba(10, 22, 40, 0.9));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--charcoal);
+            overflow-x: hidden;
+            background: var(--pearl-white);
+        }
+        
+        /* Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(248, 248, 248, 0.98);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-md) var(--spacing-md);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-xl);
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-navy);
+            font-weight: 500;
+            font-family: var(--font-accent);
+            transition: all 0.3s ease;
+            position: relative;
+            padding: var(--spacing-xs) 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--champagne-gold);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--deep-navy);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-dark);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            grid-column: 2;
+            padding: var(--spacing-3xl);
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-quote {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+            font-weight: 700;
+            color: var(--pearl-white);
+            margin-bottom: var(--spacing-xl);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-subheading);
+            font-size: 1.4rem;
+            color: var(--silver-mist);
+            margin-bottom: var(--spacing-xl);
+            font-style: italic;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            padding: var(--spacing-md) var(--spacing-xl);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-medium);
+            font-family: var(--font-accent);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+            background: linear-gradient(135deg, #F7E98E, #D4AF37);
+        }
+        
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            color: var(--pearl-white);
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--champagne-gold);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-family: var(--font-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .cta-secondary:hover {
+            background: var(--champagne-gold);
+            color: var(--deep-navy);
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            grid-column: 1;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-overlay);
+            z-index: 1;
+        }
+        
+        /* About Section */
+        .about {
+            padding: var(--spacing-3xl) 0;
+            background: var(--pearl-white);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 500px;
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+            z-index: 1;
+        }
+        
+        .about-content h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--deep-navy);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 700;
+        }
+        
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            line-height: 1.8;
+        }
+        
+        .highlights {
+            list-style: none;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .highlights li {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+        
+        .highlights li:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            margin-right: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-navy);
+            font-weight: bold;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .highlight-text {
+            font-weight: 600;
+            color: var(--deep-navy);
+            font-size: 1.1rem;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: var(--spacing-3xl) 0;
+            background: var(--gradient-dark);
+            color: var(--pearl-white);
+        }
+        
+        .services .section-title {
+            color: var(--pearl-white);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .service-card {
+            background: rgba(248, 248, 248, 0.05);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-xl);
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--champagne-gold);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-navy);
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--champagne-gold);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card p {
+            font-size: 1rem;
+            color: var(--silver-mist);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* AI Agents Section */
+        .ai-agents {
+            padding: var(--spacing-3xl) 0;
+            background: var(--pearl-white);
+            position: relative;
+        }
+        
+        .ai-agents::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            opacity: 0.03;
+            z-index: 1;
+        }
+        
+        .ai-agents .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .agent-card {
+            background: white;
+            border-radius: 25px;
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-strong);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .agent-card:hover::before {
+            left: 100%;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--champagne-gold);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .agent-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .agent-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-right: var(--spacing-md);
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+        
+        .agent-avatar::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+        
+        .agent-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--deep-navy);
+            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+        
+        .agent-role {
+            color: var(--champagne-gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-accent);
+        }
+        
+        .agent-description {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .agent-features {
+            list-style: none;
+        }
+        
+        .agent-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-xs) 0;
+        }
+        
+        .agent-features li::before {
+            content: '✨';
+            margin-right: var(--spacing-sm);
+            font-size: 1.2rem;
+        }
+        
+        .agent-cta {
+            margin-top: var(--spacing-lg);
+            display: inline-flex;
+            align-items: center;
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .agent-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        /* Listings Section */
+        .listings {
+            padding: var(--spacing-3xl) 0;
+            background: var(--gradient-dark);
+        }
+        
+        .listings .section-title {
+            color: var(--pearl-white);
+        }
+        
+        .filter-bar {
+            background: rgba(248, 248, 248, 0.1);
+            backdrop-filter: blur(20px);
+            padding: var(--spacing-xl);
+            border-radius: 25px;
+            margin-bottom: var(--spacing-2xl);
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            align-items: end;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        
+        .filter-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--champagne-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-accent);
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            padding: var(--spacing-sm);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            font-family: var(--font-body);
+            background: rgba(248, 248, 248, 0.1);
+            color: var(--pearl-white);
+            backdrop-filter: blur(10px);
+        }
+        
+        .filter-group input::placeholder {
+            color: rgba(248, 248, 248, 0.6);
+        }
+        
+        .apply-filters {
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-family: var(--font-accent);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .apply-filters:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .listing-card {
+            background: rgba(248, 248, 248, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .listing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .listing-image {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .listing-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-overlay);
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .listing-card:hover .listing-image::before {
+            opacity: 1;
+        }
+        
+        .price-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 15px;
+            font-weight: 700;
+            z-index: 3;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .listing-content {
+            padding: var(--spacing-xl);
+        }
+        
+        .listing-location {
+            color: var(--champagne-gold);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .listing-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--pearl-white);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+        
+        .listing-specs {
+            font-size: 1rem;
+            color: var(--silver-mist);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .listing-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .btn-small {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--champagne-gold);
+            background: transparent;
+            color: var(--champagne-gold);
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-small:hover {
+            background: var(--champagne-gold);
+            color: var(--deep-navy);
+            transform: translateY(-2px);
+        }
+        
+        /* Chatbot */
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .chatbot-toggle {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            border: none;
+            color: var(--deep-navy);
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-strong);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: var(--shadow-strong);
+            display: none;
+            flex-direction: column;
+            border: 2px solid var(--champagne-gold);
+        }
+        
+        .chatbot-window.open {
+            display: flex;
+        }
+        
+        .chatbot-header {
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            padding: var(--spacing-md);
+            border-radius: 23px 23px 0 0;
+            font-weight: 700;
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: var(--spacing-md);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            background: var(--pearl-white);
+        }
+        
+        .message {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .message.bot {
+            background: var(--silver-mist);
+            color: var(--charcoal);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .message.user {
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            font-weight: 500;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: var(--spacing-md);
+            border-top: 1px solid var(--silver-mist);
+            background: white;
+            border-radius: 0 0 23px 23px;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--silver-mist);
+            border-radius: 15px;
+            margin-right: var(--spacing-sm);
+            font-family: var(--font-body);
+        }
+        
+        .chatbot-input button {
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-input button:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .quick-actions {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            background: white;
+        }
+        
+        .quick-action {
+            background: var(--pearl-white);
+            border: 1px solid var(--silver-mist);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--charcoal);
+        }
+        
+        .quick-action:hover {
+            background: var(--champagne-gold);
+            color: var(--deep-navy);
+            border-color: var(--champagne-gold);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--midnight-black);
+            color: var(--pearl-white);
+            padding: var(--spacing-3xl) 0 var(--spacing-lg);
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-gold);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .footer-column h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--champagne-gold);
+            font-weight: 600;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-column a {
+            color: var(--silver-mist);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-column a:hover {
+            color: var(--champagne-gold);
+        }
+        
+        .footer-column p {
+            color: var(--silver-mist);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--charcoal);
+            border-radius: 10px;
+            background: var(--charcoal);
+            color: var(--pearl-white);
+            font-size: 1rem;
+        }
+        
+        .newsletter input::placeholder {
+            color: var(--silver-mist);
+        }
+        
+        .newsletter button {
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--champagne-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            color: var(--champagne-gold);
+        }
+        
+        .social-links a:hover {
+            background: var(--champagne-gold);
+            color: var(--deep-navy);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--charcoal);
+            color: var(--silver-mist);
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: 80vh;
+            }
+            
+            .hero-image {
+                grid-column: 1;
+                grid-row: 1;
+                height: 400px;
+            }
+            
+            .hero-content {
+                grid-column: 1;
+                grid-row: 1;
+                align-self: end;
+                background: rgba(26, 26, 26, 0.8);
+                backdrop-filter: blur(10px);
+                border-radius: 25px;
+                margin: var(--spacing-md);
+            }
+        }
+        /* Dark mode (respects system preference) */
+@media (prefers-color-scheme: dark) {
+  /* Base */
+  body { background: #0b1220; color: #e5e7eb; }
+
+  /* Navbar */
+  .navbar { background: rgba(10,12,18,0.95); border-bottom: 1px solid rgba(212,175,55,0.25); }
+  .navbar.scrolled { background: rgba(10,12,18,0.98); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+  .nav-links a { color: #e5e7eb; }
+  .nav-links a:hover { color: var(--champagne-gold); }
+  .hamburger span { background: #e5e7eb; }
+
+  /* Headings */
+  .section-title { color: #e6edf7; }
+
+  /* Hero stays dark due to existing gradient-dark and overlays */
+
+  /* About */
+  .about { background: #0b1220; }
+  .about-content h2 { color: #e6edf7; }
+  .about-content p { color: #cbd5e1; }
+  .highlights li { background: #0f172a; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .highlight-text { color: #e6edf7; }
+
+  /* Services already dark; refine copy contrast */
+  .services { color: #e6edf7; }
+  .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.25); }
+  .service-card p { color: #cbd5e1; }
+
+  /* AI Agents */
+  .ai-agents { background: #0b1220; }
+  .agent-card { background: #0f172a; border: 2px solid rgba(212,175,55,0.2); box-shadow: 0 15px 40px rgba(0,0,0,0.45); }
+  .agent-info h3 { color: #e6edf7; }
+  .agent-description { color: #cbd5e1; }
+  .agent-features li { color: #e5e7eb; }
+
+  /* Listings */
+  .listings { /* gradient-dark already applied */ }
+  .filter-bar { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.25); }
+  .filter-group label { color: var(--champagne-gold); }
+  .filter-group input,
+  .filter-group select {
+    background: rgba(255,255,255,0.06);
+    color: #e5e7eb;
+    border: 1px solid rgba(212,175,55,0.35);
+  }
+  .filter-group input::placeholder { color: rgba(229,231,235,0.6); }
+  .listing-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.25); }
+  .listing-specs { color: #cbd5e1; }
+  .btn-small { color: var(--champagne-gold); border-color: var(--champagne-gold); }
+  .btn-small:hover { background: var(--champagne-gold); color: var(--deep-navy); }
+
+  /* Chatbot */
+  .chatbot-window { background: #0f172a; border: 2px solid var(--champagne-gold); }
+  .chatbot-messages { background: #0b1220; }
+  .message.bot { background: #1f2937; color: #e5e7eb; }
+  .message.user { background: var(--gradient-gold); color: var(--deep-navy); }
+  .chatbot-input { background: #0f172a; border-top: 1px solid #1f2937; }
+  .chatbot-input input { background: #111827; border: 1px solid #374151; color: #e5e7eb; }
+  .chatbot-input input::placeholder { color: #9ca3af; }
+  .chatbot-input button { background: var(--gradient-gold); color: var(--deep-navy); }
+  .quick-actions { background: #0f172a; }
+  .quick-action { background: #111827; border: 1px solid #374151; color: #e5e7eb; }
+  .quick-action:hover { background: var(--champagne-gold); color: var(--deep-navy); border-color: var(--champagne-gold); }
+
+  /* Footer */
+  .footer { background: #0a0f1a; }
+  .footer-column p, .footer-column a { color: #cbd5e1; }
+  .footer-bottom { border-top: 1px solid #1f2937; color: #9ca3af; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar-track { background: #0f172a; }
+  ::-webkit-scrollbar-thumb { background: var(--champagne-gold); }
+
+  /* Newsletter refinement */
+  .newsletter input { background: #111827; border: 1px solid #374151; color: #e5e7eb; }
+  .newsletter input::placeholder { color: #9ca3af; }
+}
+/* ==== FIXES & POLISH (append at end of <style>) ==== */
+
+/* Repair section underline */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+}
+
+/* CTA group layout */
+.cta-group {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Highlight icon color and center fix */
+.highlight-icon {
+  color: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inputs/selects in filter bar */
+.filter-group input,
+.filter-group select {
+  border-radius: 10px;
+  outline: none;
+}
+
+/* Agent card shimmer + hover */
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.12), transparent);
+  transition: left 0.6s ease;
+}
+.agent-card:hover::before { left: 100%; }
+
+/* Chatbot toggle button reset */
+.chatbot-toggle {
+  border: none;
+}
+
+/* Footer grid gap repair */
+.footer-grid {
+  gap: var(--spacing-2xl);
+}
+
+/* Mobile nav: class-based open state (replaces inline style toggling) */
+.nav-links {
+  transition: opacity .25s ease, transform .25s ease;
+}
+.nav-links.is-open {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: rgba(248, 248, 248, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 0 0 15px 15px;
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; opacity: 0; transform: translateY(-8px); }
+}
+
+/* Subtle readability boosts (light mode) */
+.about-content p,
+.service-card p,
+.agent-description,
+.listing-specs,
+.footer-column p,
+.footer-column a { text-rendering: optimizeLegibility; }
+
+/* Preserve and refine dark mode contrast (assumes your previous @media prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  .nav-links.is-open {
+    background: rgba(10,12,18,0.98);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .service-card { background: rgba(255,255,255,0.04); }
+  .listing-card { background: rgba(255,255,255,0.04); }
+}
+
+/* Performance: faster first paint for heavy sections */
+.hero, .about, .services, .ai-agents, .listings, .footer { content-visibility: auto; contain-intrinsic-size: 800px; }
+/* ==== FIXES & POLISH (append at end of <style>) ==== */
+
+/* Repair section underline */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+}
+
+/* CTA group layout */
+.cta-group {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Highlight icon color and center fix */
+.highlight-icon {
+  color: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inputs/selects in filter bar */
+.filter-group input,
+.filter-group select {
+  border-radius: 10px;
+  outline: none;
+}
+
+/* Agent card shimmer + hover */
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.12), transparent);
+  transition: left 0.6s ease;
+}
+.agent-card:hover::before { left: 100%; }
+
+/* Chatbot toggle button reset */
+.chatbot-toggle {
+  border: none;
+}
+
+/* Footer grid gap repair */
+.footer-grid {
+  gap: var(--spacing-2xl);
+}
+
+/* Mobile nav: class-based open state (replaces inline style toggling) */
+.nav-links {
+  transition: opacity .25s ease, transform .25s ease;
+}
+.nav-links.is-open {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: rgba(248, 248, 248, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 0 0 15px 15px;
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; opacity: 0; transform: translateY(-8px); }
+}
+
+/* Subtle readability boosts (light mode) */
+.about-content p,
+.service-card p,
+.agent-description,
+.listing-specs,
+.footer-column p,
+.footer-column a { text-rendering: optimizeLegibility; }
+
+/* Preserve and refine dark mode contrast (assumes your previous @media prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  .nav-links.is-open {
+    background: rgba(10,12,18,0.98);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .service-card { background: rgba(255,255,255,0.04); }
+  .listing-card { background: rgba(255,255,255,0.04); }
+}
+
+/* Performance: faster first paint for heavy sections */
+.hero, .about, .services, .ai-agents, .listings, .footer { content-visibility: auto; contain-intrinsic-size: 800px; }
+
+
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin-left: var(--spacing-sm);
+            }
+            
+            .hero-content {
+                padding: var(--spacing-xl);
+            }
+            
+            .hero-quote {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .apply-filters {
+                align-self: stretch;
+            }
+            
+            .listings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .chatbot-window {
+                width: 90vw;
+                right: 5vw;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .agent-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .agent-avatar {
+                margin: 0 0 var(--spacing-md) 0;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(248, 248, 248, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--champagne-gold);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--silver-mist);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--champagne-gold);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8941F;
+        }
+        
+        /* Additional luxury touches */
+        .luxury-accent {
+            position: relative;
+        }
+        
+        .luxury-accent::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-gold);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="Broker Hunt Home">Broker Hunt</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#ai-agents">AI Agents</a></li>
+                <li><a href="#listings">Listings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" aria-label="Menu toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-image"></div>
+        <div class="hero-content fade-in">
+            <h1 class="hero-quote">"Unlock the door to your next legacy property."</h1>
+            <p class="hero-subtitle">Where luxury meets innovation in real estate excellence</p>
+            <div class="cta-group">
+                <a href="#listings" class="cta-primary" aria-label="Explore property listings">Explore Listings</a>
+                <a href="#about" class="cta-secondary" aria-label="Learn more about us">Discover More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image"></div>
+                <div class="about-content">
+                    <h2>Excellence in Real Estate</h2>
+                    <p>At Broker Hunt, we redefine luxury real estate through innovative technology and personalized service. Our commitment to excellence has made us the premier choice for discerning clients seeking exceptional properties.</p>
+                    <p>With decades of combined experience and cutting-edge AI technology, we deliver results that exceed expectations while maintaining the highest standards of professionalism and integrity.</p>
+                    <ul class="highlights">
+                        <li>
+                            <div class="highlight-icon">🏆</div>
+                            <span class="highlight-text">Luxury property marketing & promotion</span>
+                        </li>
+                        <li>
+                            <div class="highlight-icon">💼</div>
+                            <span class="highlight-text">Expert listing, sales & rental support</span>
+                        </li>
+                        <li>
+                            <div class="highlight-icon">🤖</div>
+                            <span class="highlight-text">AI-powered agent deployment & management</span>
+                        </li>
+                        <li>
+                            <div class="highlight-icon">📈</div>
+                            <span class="highlight-text">Personalized consultancy & portfolio growth</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services fade-in" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Marketing & Social Promotions</h3>
+                    <p>Comprehensive digital marketing strategies utilizing cutting-edge technology to maximize your property's visibility and reach the most qualified audience through premium channels.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Listing & Sales Support</h3>
+                    <p>Professional listing management and sales support with our expert team to ensure optimal market positioning, strategic pricing, and successful closing experiences.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔑</div>
+                    <h3>Rental Management</h3>
+                    <p>Full-service luxury rental management including premium tenant screening, lease negotiation, and comprehensive property maintenance coordination for optimal returns.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Agent Deployment</h3>
+                    <p>Revolutionary AI-powered agents for intelligent automation, lead generation, customer service excellence, and operational efficiency that sets new industry standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Agents Section -->
+    <section class="ai-agents fade-in" id="ai-agents">
+        <div class="container">
+            <h2 class="section-title">Meet Our AI Agents</h2>
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">📱</div>
+                        <div class="agent-info">
+                            <h3>Social Maestro</h3>
+                            <div class="agent-role">Marketing Specialist</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Revolutionary social media automation that transforms your digital presence. Social Maestro orchestrates sophisticated content scheduling, engagement analytics, and audience growth strategies.</p>
+                    <ul class="agent-features">
+                        <li>Automated content scheduling across all platforms</li>
+                        <li>Advanced engagement tracking and analytics</li>
+                        <li>AI-driven audience targeting and growth</li>
+                        <li>Performance optimization recommendations</li>
+                    </ul>
+                    <a href="#" class="agent-cta">Deploy Agent</a>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">🎯</div>
+                        <div class="agent-info">
+                            <h3>Lead Navigator</h3>
+                            <div class="agent-role">Sales Automation</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Intelligent lead capture and nurturing system that transforms prospects into clients. Lead Navigator integrates seamlessly with CRM systems for unprecedented conversion rates.</p>
+                    <ul class="agent-features">
+                        <li>Smart lead capture and qualification</li>
+                        <li>Automated nurturing sequences</li>
+                        <li>CRM integration and management</li>
+                        <li>Conversion tracking and optimization</li>
+                    </ul>
+                    <a href="#" class="agent-cta">Deploy Agent</a>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">💬</div>
+                        <div class="agent-info">
+                            <h3>Inbox Concierge</h3>
+                            <div class="agent-role">Communication Hub</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Sophisticated communication management across all channels. Inbox Concierge handles DMs, WhatsApp, SMS, and emails with intelligent routing and instant responses.</p>
+                    <ul class="agent-features">
+                        <li>Multi-channel message management</li>
+                        <li>Intelligent response automation</li>
+                        <li>Priority routing and escalation</li>
+                        <li>24/7 customer support coverage</li>
+                    </ul>
+                    <a href="#" class="agent-cta">Deploy Agent</a>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">📊</div>
+                        <div class="agent-info">
+                            <h3>CalcMaster</h3>
+                            <div class="agent-role">Financial Analyst</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Advanced financial calculation engine providing real-time mortgage, ROI, and rental yield analysis. CalcMaster delivers interactive charts and comprehensive market insights.</p>
+                    <ul class="agent-features">
+                        <li>Real-time mortgage calculations</li>
+                        <li>ROI and rental yield analysis</li>
+                        <li>Interactive market charts</li>
+                        <li>Investment comparison tools</li>
+                    </ul>
+                    <a href="#" class="agent-cta">Deploy Agent</a>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">📅</div>
+                        <div class="agent-info">
+                            <h3>Task Butler</h3>
+                            <div class="agent-role">Operations Manager</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Comprehensive workflow automation for seamless operations. Task Butler manages scheduling, reminders, follow-ups, and complex workflow orchestration with precision.</p>
+                    <ul class="agent-features">
+                        <li>Automated showing scheduling</li>
+                        <li>Smart reminder systems</li>
+                        <li>Follow-up workflow management</li>
+                        <li>Task prioritization and routing</li>
+                    </ul>
+                    <a href="#" class="agent-cta">Deploy Agent</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listings Section -->
+    <section class="listings fade-in" id="listings">
+        <div class="container">
+            <h2 class="section-title">Premium Listings</h2>
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="min-price">Min Price</label>
+                    <input type="number" id="min-price" placeholder="$0">
+                </div>
+                <div class="filter-group">
+                    <label for="max-price">Max Price</label>
+                    <input type="number" id="max-price" placeholder="$10,000,000">
+                </div>
+                <div class="filter-group">
+                    <label for="location">Location</label>
+                    <select id="location">
+                        <option value="">All Locations</option>
+                        <option value="manhattan">Manhattan</option>
+                        <option value="beverly-hills">Beverly Hills</option>
+                        <option value="miami">Miami Beach</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="property-type">Type</label>
+                    <select id="property-type">
+                        <option value="">All Types</option>
+                        <option value="sale">For Sale</option>
+                        <option value="rent">For Rent</option>
+                    </select>
+                </div>
+                <button class="apply-filters" onclick="applyFilters()">Apply Filters</button>
+            </div>
+            <div class="listings-grid" id="listings-grid">
+                <!-- Listings will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#ai-agents">AI Agents</a></li>
+                        <li><a href="#listings">Listings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="mailto:info@brokerhunt.com">info@brokerhunt.com</a></li>
+                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+                        <li>123 Luxury Avenue, Suite 100</li>
+                        <li>New York, NY 10001</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe to receive our exclusive luxury listings and premium market insights delivered directly to your inbox.</p>
+                    <form class="newsletter" onsubmit="handleNewsletterSubmit(event)">
+                        <input type="email" placeholder="Enter your email address" aria-label="Email for newsletter" required>
+                        <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">f</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Broker Hunt. All rights reserved. Luxury Real Estate Redefined.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button class="chatbot-toggle" onclick="toggleChat()" aria-label="Open chat assistant">💬</button>
+        <div class="chatbot-window" id="chatWindow">
+            <div class="chatbot-header">
+                Broker Hunt AI Assistant
+            </div>
+            <div class="quick-actions">
+                <button class="quick-action" onclick="sendQuickMessage('Who are you?')">Who are you?</button>
+                <button class="quick-action" onclick="sendQuickMessage('What services do you offer?')">Our Services</button>
+                <button class="quick-action" onclick="sendQuickMessage('Show me luxury listings')">Premium Listings</button>
+                <button class="quick-action" onclick="sendQuickMessage('Tell me about AI agents')">AI Agents</button>
+            </div>
+            <div class="chatbot-messages" id="chatMessages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Ask about luxury properties..." aria-label="Chat message input">
+                <button onclick="sendMessage()" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced listings data with luxury properties
+        const listings = [
+            {
+                id: 1,
+                price: 12500000,
+                location: 'Manhattan, NY',
+                title: 'Penthouse Paradise',
+                specs: '4 bed, 3 bath, 3,200 sq ft',
+                type: 'sale',
+                image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 2,
+                price: 25000,
+                location: 'Beverly Hills, CA',
+                title: 'Hollywood Hills Estate',
+                specs: '6 bed, 5 bath, 5,500 sq ft',
+                type: 'rent',
+                image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 3,
+                price: 8900000,
+                location: 'Miami Beach, FL',
+                title: 'Oceanfront Sanctuary',
+                specs: '3 bed, 3 bath, 2,800 sq ft',
+                type: 'sale',
+                image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 4,
+                price: 18000,
+                location: 'Manhattan, NY',
+                title: 'Central Park View',
+                specs: '3 bed, 2 bath, 2,400 sq ft',
+                type: 'rent',
+                image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 5,
+                price: 22000000,
+                location: 'Beverly Hills, CA',
+                title: 'Architectural Masterpiece',
+                specs: '8 bed, 7 bath, 8,200 sq ft',
+                type: 'sale',
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 6,
+                price: 12500,
+                location: 'Miami Beach, FL',
+                title: 'Waterfront Luxury',
+                specs: '2 bed, 2 bath, 1,800 sq ft',
+                type: 'rent',
+                image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            }
+        ];
+
+        // Render listings with enhanced design
+        function renderListings(listingsToShow = listings) {
+            const grid = document.getElementById('listings-grid');
+            grid.innerHTML = listingsToShow.map(listing => `
+                <div class="listing-card">
+                    <div class="listing-image" style="background: url('${listing.image}') center/cover;">
+                        <div class="price-badge">${listing.price.toLocaleString()}</div>
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-location">${listing.location}</div>
+                        <div class="listing-title">${listing.title}</div>
+                        <div class="listing-specs">${listing.specs}</div>
+                        <div class="listing-actions">
+                            <a href="#" class="btn-small">View Details</a>
+                            <a href="#" class="btn-small">Contact Agent</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const minPrice = parseInt(document.getElementById('min-price').value) || 0;
+            const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
+            const location = document.getElementById('location').value;
+            const propertyType = document.getElementById('property-type').value;
+
+            let filtered = listings.filter(listing => {
+                const matchesPrice = listing.price >= minPrice && listing.price <= maxPrice;
+                const matchesLocation = !location || listing.location.toLowerCase().includes(location);
+                const matchesType = !propertyType || listing.type === propertyType;
+                
+                return matchesPrice && matchesLocation && matchesType;
+            });
+
+            renderListings(filtered);
+        }
+
+        // Initialize listings
+        renderListings();
+
+        // Enhanced chatbot functionality
+        let chatOpen = false;
+        const responses = {
+            'who are you?': 'I\'m the Broker Hunt AI Assistant, your luxury real estate concierge. I specialize in connecting discerning clients with exceptional properties and our premium services.',
+            'what services do you offer?': 'We offer comprehensive luxury real estate services including premium property marketing, expert sales support, rental management, and cutting-edge AI agent deployment for maximum efficiency.',
+            'show me luxury listings': 'You can explore our curated collection of luxury properties in the Premium Listings section above. Each property is hand-selected for its exceptional quality and investment potential.',
+            'tell me about ai agents': 'Our revolutionary AI agents include Social Maestro for marketing automation, Lead Navigator for lead management, Inbox Concierge for communications, CalcMaster for financial analysis, and Task Butler for workflow automation.',
+            'default': 'Thank you for your interest in Broker Hunt! As your luxury real estate specialists, we\'re here to help you discover exceptional properties and premium services. How may I assist you today?'
+        };
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatOpen = !chatOpen;
+            chatWindow.classList.toggle('open', chatOpen);
+            
+            if (chatOpen && document.getElementById('chatMessages').children.length === 0) {
+                addMessage('Welcome to Broker Hunt! I\'m your AI assistant specializing in luxury real estate. How can I help you find your perfect property today?', 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = text;
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot';
+                typingDiv.innerHTML = '<div class="loading"></div>';
+                document.getElementById('chatMessages').appendChild(typingDiv);
+                
+                // Simulate AI response with delay
+                setTimeout(() => {
+                    typingDiv.remove();
+                    const response = responses[message.toLowerCase()] || responses['default'];
+                    addMessage(response, 'bot');
+                }, 800);
+            }
+        }
+
+        function sendQuickMessage(message) {
+            addMessage(message, 'user');
+            setTimeout(() => {
+                const response = responses[message.toLowerCase()] || responses['default'];
+                addMessage(response, 'bot');
+            }, 600);
+        }
+
+        // Enhanced newsletter subscription
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            if (email) {
+                // Show success animation
+                const button = e.target.querySelector('button');
+                const originalText = button.textContent;
+                button.textContent = 'Subscribed!';
+                button.style.background = 'linear-gradient(135deg, #2E8B57, #32CD32)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+                
+                e.target.reset();
+            }
+        }
+
+        // Enter key support for chat
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(248, 248, 248, 0.98)';
+                navLinks.style.backdropFilter = 'blur(20px)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+                navLinks.style.borderRadius = '0 0 15px 15px';
+            }
+        });
+
+        // Initialize fade-in for initial viewport elements
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        });
+
+        // Enhanced scroll effects for premium feel
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            document.body.classList.add('scrolling');
+            
+            scrollTimeout = setTimeout(() => {
+                document.body.classList.remove('scrolling');
+            }, 150);
+        });
+
+        // Luxury cursor effect (optional enhancement)
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const cursorEl = document.createElement('div');
+                cursorEl.className = 'cursor';
+                cursorEl.style.cssText = `
+                    position: fixed;
+                    width: 20px;
+                    height: 20px;
+                    background: radial-gradient(circle, rgba(212, 175, 55, 0.8), transparent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 9999;
+                    transition: all 0.1s ease;
+                `;
+                document.body.appendChild(cursorEl);
+            }
+            
+            document.querySelector('.cursor').style.left = e.clientX - 10 + 'px';
+            document.querySelector('.cursor').style.top = e.clientY - 10 + 'px';
+        });
+
+        // Add intersection observer for stagger animations
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.opacity = '1';
+                    }, index * 100);
+                }
+            });
+        });
+
+        // Apply stagger animation to service cards and agent cards
+        document.querySelectorAll('.service-card, .agent-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            staggerObserver.observe(card);
+        });
+
+        // Premium loading animation for page transitions
+        window.addEventListener('beforeunload', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'scale(0.95)';
+            document.body.style.transition = 'all 0.3s ease';
+        });
+
+        // Add luxury sound effects (optional)
+        function playLuxurySound(type) {
+            // Placeholder for luxury sound effects
+            // In a real implementation, you would load and play audio files
+            console.log(`Playing ${type} sound effect`);
+        }
+
+        // Add sound to luxury interactions
+        document.querySelectorAll('.cta-primary, .agent-cta, .apply-filters').forEach(button => {
+            button.addEventListener('click', () => playLuxurySound('click'));
+        });
+
+        // Advanced form validation with luxury styling
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#D4AF37';
+                this.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.3)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = '';
+                this.style.boxShadow = '';
+            });
+        });
+
+        console.log('🏆 Broker Hunt - Luxury Real Estate Platform Initialized');
+        console.log('✨ Premium features: AI Agents, Advanced Filtering, Responsive Design');
+        console.log('🎨 Luxury Color Palette: Champagne Gold, Deep Navy, Midnight Black');
+
+
+        
+  // Mobile menu: class toggle + a11y
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (hamburger && navLinks) {
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Menu toggle');
+
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      hamburger.classList.toggle('active', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+
+    </script>
+</body>
+</html>
